@@ -50,11 +50,13 @@ error:
 }
 
 IHex8* open_controller(const int argc, const char* argv[]) {
-//  return open_controller_sio(PORT, 115200);
-  return open_controller_nio("localhost", "5331");
+  // TODO use args to set parameters and choose I/O method
+  return open_controller_sio(PORT, 115200);
+//  return open_controller_nio("localhost", "5331");
 }
 
 IHex8* open_controller_sio(const char* port, int speed) {
+  puts("open sio");
   sio_s* sio = (sio_s*) malloc(sizeof(sio_s));;
   sio_init(sio);
   sio->info.port = port;
